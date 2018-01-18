@@ -1,32 +1,70 @@
 package com.order.OrderHandler.dto;
 
-import java.util.Date;
-import java.util.Map;
+import com.order.OrderHandler.entity.OrderIdentity;
+
+import javax.persistence.Id;
 
 public class OrderDTO {
-    private String orderId;
-    private Map<ProductDetailsDTO,Integer> productList;
-private String sellerId;
-private String userId;
-private BillDTO orderBill;
-private String shipmentAddress;
-private String trackId;
-    private String shipmentMethod;
 
-    public String getOrderId() {
-        return orderId;
+    OrderIdentity orderIdentity;
+    long price;
+    String sellerId;
+    String timeStamp;
+    String productName;
+    String userId;
+    String shipmentMethod;
+    String paymentMethod;
+    String sellerName;
+String imageUrl;
+int quantity;
+
+    public OrderDTO() {
     }
 
-    public void setOrderId(String orderId) {
-        this.orderId = orderId;
+    public OrderDTO(OrderIdentity orderIdentity, long price, String sellerId, String timeStamp, String productName, String userId, String shipmentMethod, String paymentMethod, String sellerName, String imageUrl, int quantity) {
+        this.orderIdentity = orderIdentity;
+        this.price = price;
+        this.sellerId = sellerId;
+        this.timeStamp = timeStamp;
+        this.productName = productName;
+        this.userId = userId;
+        this.shipmentMethod = shipmentMethod;
+        this.paymentMethod = paymentMethod;
+        this.sellerName = sellerName;
+        this.imageUrl = imageUrl;
+        this.quantity = quantity;
     }
 
-    public Map<ProductDetailsDTO, Integer> getProductList() {
-        return productList;
+    public String getImageUrl() {
+        return imageUrl;
     }
 
-    public void setProductList(Map<ProductDetailsDTO, Integer> productList) {
-        this.productList = productList;
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public OrderIdentity getOrderIdentity() {
+        return orderIdentity;
+    }
+
+    public void setOrderIdentity(OrderIdentity orderIdentity) {
+        this.orderIdentity = orderIdentity;
+    }
+
+    public long getPrice() {
+        return price;
+    }
+
+    public void setPrice(long price) {
+        this.price = price;
     }
 
     public String getSellerId() {
@@ -37,36 +75,45 @@ private String trackId;
         this.sellerId = sellerId;
     }
 
+    @Override
+    public String toString() {
+        return "OrderDTO{" +
+                "orderIdentity=" + orderIdentity +
+                ", price=" + price +
+                ", sellerId='" + sellerId + '\'' +
+                ", timeStamp='" + timeStamp + '\'' +
+                ", productName='" + productName + '\'' +
+                ", userId='" + userId + '\'' +
+                ", shipmentMethod='" + shipmentMethod + '\'' +
+                ", paymentMethod='" + paymentMethod + '\'' +
+                ", sellerName='" + sellerName + '\'' +
+                ", imageUrl='" + imageUrl + '\'' +
+                ", quantity=" + quantity +
+                '}';
+    }
+
+    public String getTimeStamp() {
+        return timeStamp;
+    }
+
+    public void setTimeStamp(String timeStamp) {
+        this.timeStamp = timeStamp;
+    }
+
+    public String getProductName() {
+        return productName;
+    }
+
+    public void setProductName(String productName) {
+        this.productName = productName;
+    }
+
     public String getUserId() {
         return userId;
     }
 
     public void setUserId(String userId) {
         this.userId = userId;
-    }
-
-    public BillDTO getOrderBill() {
-        return orderBill;
-    }
-
-    public void setOrderBill(BillDTO orderBill) {
-        this.orderBill = orderBill;
-    }
-
-    public String getShipmentAddress() {
-        return shipmentAddress;
-    }
-
-    public void setShipmentAddress(String shipmentAddress) {
-        this.shipmentAddress = shipmentAddress;
-    }
-
-    public String getTrackId() {
-        return trackId;
-    }
-
-    public void setTrackId(String trackId) {
-        this.trackId = trackId;
     }
 
     public String getShipmentMethod() {
@@ -85,14 +132,11 @@ private String trackId;
         this.paymentMethod = paymentMethod;
     }
 
-    public Date getOrderDate() {
-        return orderDate;
+    public String getSellerName() {
+        return sellerName;
     }
 
-    public void setOrderDate(Date orderDate) {
-        this.orderDate = orderDate;
+    public void setSellerName(String sellerName) {
+        this.sellerName = sellerName;
     }
-
-    private String paymentMethod;
-    private Date orderDate;
 }
