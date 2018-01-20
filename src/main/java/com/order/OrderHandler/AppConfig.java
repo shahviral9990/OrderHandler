@@ -14,7 +14,7 @@ public class AppConfig {
     //Put Other Application configuration here.
 
     @Bean
-    public JavaMailSender getMailSender(){
+    public JavaMailSender getMailSender() {
         JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
 
         //Using gmail

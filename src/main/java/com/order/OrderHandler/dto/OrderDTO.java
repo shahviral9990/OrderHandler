@@ -6,17 +6,17 @@ import javax.persistence.Id;
 
 public class OrderDTO {
 
-    OrderIdentity orderIdentity;
-    long price;
-    String sellerId;
-    String timeStamp;
-    String productName;
-    String userId;
-    String shipmentMethod;
-    String paymentMethod;
-    String sellerName;
-String imageUrl;
-int quantity;
+    private OrderIdentity orderIdentity;
+    private long price;
+    private String sellerId;
+    private String timeStamp;
+    private String productName;
+    private String userId;
+    private String shipmentMethod;
+    private String paymentMethod;
+    private String sellerName;
+    private String imageUrl;
+    private int quantity;
 
     public OrderDTO() {
     }

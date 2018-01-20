@@ -51,14 +51,14 @@ public class OrderPostRequestDTO {
         this.userId = userId;
     }
 
-    String productName;
-    String productId;
-   // OrderIdentity orderIdentity;
-    long price;
-    String sellerId;
-    String sellerName;
-    String userId;
-int quantity;
+    private String productName;
+    private String productId;
+    // OrderIdentity orderIdentity;
+    private long price;
+    private String sellerId;
+    private String sellerName;
+    private String userId;
+    private int quantity;
 
     public int getQuantity() {
         return quantity;
@@ -76,5 +76,5 @@ int quantity;
         this.imageUrl = imageUrl;
     }
 
-    String imageUrl;
+    private String imageUrl;
 }

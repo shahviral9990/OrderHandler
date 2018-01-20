@@ -69,38 +69,36 @@ public class OrderController {
                 orderMapping.put(cart.getSellerId(), list);
             }
         }
-        for(String seller_id:orderMapping.keySet())
-        {
-            List<OrderPostRequestDTO> listOrder=orderMapping.get(seller_id);
-            synchronized (listOrder){
-             String timestamp=System.currentTimeMillis()+"";
-             for(OrderPostRequestDTO order:listOrder)
-             {
-                 Order saveOrder=new Order();
-                 OrderDTO data=new OrderDTO(new OrderIdentity(timestamp,order.getProductId()),order.getPrice(),order.getSellerId(),timestamp,order.getProductName(),order.getUserId(),"normal","COD",order.getSellerName(),order.getImageUrl(),order.getQuantity());
-                 System.out.println(data.toString());
-                 BeanUtils.copyProperties(data, saveOrder);
-                 System.out.println(saveOrder.toString());
-                 orderService.saveOrder(saveOrder);
-                 ProductOrder orderMail = new ProductOrder();
-                 orderMail.setOrderId(data.getOrderIdentity().getOrderId());
-                 orderMail.setProductName(data.getProductName());
-orderMail.setUserId(data.getUserId());
-orderMail.setProductName(data.getProductName());
-orderMail.setPrice(Integer.parseInt(data.getPrice()+""));
-order.setQuantity(data.getQuantity());
-order.setSellerName(data.getSellerName());
-                 CustomerInfo customerInfo = new CustomerInfo();
+        for (String seller_id : orderMapping.keySet()) {
+            List<OrderPostRequestDTO> listOrder = orderMapping.get(seller_id);
+            synchronized (listOrder) {
+                String timestamp = System.currentTimeMillis() + "";
+                for (OrderPostRequestDTO order : listOrder) {
+                    Order saveOrder = new Order();
+                    OrderDTO data = new OrderDTO(new OrderIdentity(timestamp, order.getProductId()), order.getPrice(), order.getSellerId(), timestamp, order.getProductName(), order.getUserId(), "normal", "COD", order.getSellerName(), order.getImageUrl(), order.getQuantity());
+                    System.out.println(data.toString());
+                    BeanUtils.copyProperties(data, saveOrder);
+                    System.out.println(saveOrder.toString());
+                    orderService.saveOrder(saveOrder);
+                    ProductOrder orderMail = new ProductOrder();
+                    orderMail.setOrderId(data.getOrderIdentity().getOrderId());
+                    orderMail.setProductName(data.getProductName());
+                    orderMail.setUserId(data.getUserId());
+                    orderMail.setProductName(data.getProductName());
+                    orderMail.setPrice(Integer.parseInt(data.getPrice() + ""));
+                    order.setQuantity(data.getQuantity());
+                    order.setSellerName(data.getSellerName());
+                    CustomerInfo customerInfo = new CustomerInfo();
 
-                 customerInfo.setEmail(data.getUserId());
-                 orderMail.setCustomerInfo(customerInfo);
-                 orderServiceMail.sendOrderConfirmation(orderMail);
+                    customerInfo.setEmail(data.getUserId());
+                    orderMail.setCustomerInfo(customerInfo);
+                    orderServiceMail.sendOrderConfirmation(orderMail);
 
-             }
+                }
             }
 
         }
-       // OrderGenerateDTO orderGenerateDTO = new OrderGenerateDTO();
+        // OrderGenerateDTO orderGenerateDTO = new OrderGenerateDTO();
         // OrderGenerate cart = new OrderGenerate();
         // cart.setCartIdentity(new CartIdentity(cartDTO.getCartIdentity().getCartId(),cartDTO.getCartIdentity().getProductId()));
         //cart.

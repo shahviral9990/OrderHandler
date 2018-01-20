@@ -5,20 +5,20 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Table(name=Order.TABLE_NAME)
+@Table(name = Order.TABLE_NAME)
 public class Order {
     @EmbeddedId
-    OrderIdentity orderIdentity;
-    long price;
-    String sellerId;
-    String timeStamp;
-    String productName;
-    String userId;
-    String shipmentMethod;
-    String paymentMethod;
-    String sellerName;
-    String imageUrl;
-    int quantity;
+    private OrderIdentity orderIdentity;
+    private long price;
+    private String sellerId;
+    private String timeStamp;
+    private String productName;
+    private String userId;
+    private String shipmentMethod;
+    private String paymentMethod;
+    private String sellerName;
+    private String imageUrl;
+    private int quantity;
 
     public Order() {
     }
@@ -52,7 +52,8 @@ public class Order {
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
     }
-    public static final String TABLE_NAME="order_db";
+
+    public static final String TABLE_NAME = "order_db";
 
     public long getPrice() {
         return price;

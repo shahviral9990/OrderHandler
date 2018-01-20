@@ -41,7 +41,7 @@ public class MailServiceImpl implements MailService {
                 mimeMessage.setRecipient(Message.RecipientType.TO,
                         new InternetAddress(order.getUserId()));
                 mimeMessage.setText("Dear " + "User"
-                        + ", thank you for placing "+order.getProductName()+ ",Your order id is EPO" + order.getOrderId() +"\n price is "+ order.getPrice()+" and quantity "+order.getQuantity()+" bought fom"+order.getSellerName());
+                        + ", thank you for placing " + order.getProductName() + ",Your order id is EPO" + order.getOrderId() + "\n price is " + order.getPrice() );
                 mimeMessage.setSubject("Your order on Electrokart");
             }
         };

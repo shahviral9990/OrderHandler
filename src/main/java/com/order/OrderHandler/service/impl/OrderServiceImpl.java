@@ -12,10 +12,11 @@ import java.util.List;
 
 @Service
 @Transactional(readOnly = false, propagation = Propagation.REQUIRES_NEW)
-public class OrderServiceImpl implements OrderService{
+public class OrderServiceImpl implements OrderService {
 
     @Autowired
     OrderRepository orderRepository;
+
     @Override
     public List<Order> getAllByUserId(String userId) {
         return orderRepository.findByUserIdOrderByOrderIdentityOrderIdDesc(userId);
